@@ -1,0 +1,133 @@
+Creating forms in HTML is a common task, and following best practices can help ensure your forms are accessible, user-friendly, and effective. Here are some best practices for building forms in HTML:
+
+Use appropriate input types: HTML5 introduced many input types like email, tel, number, date, etc. These not only validate the input, but also provide a better user experience, especially on mobile devices.
+Always use labels: Each form control should have a <label> associated with it. This is important for accessibility as screen readers use them to read out what each field means. The for attribute in the <label> tag should match the id of the input element.
+Group related fields with <fieldset>: The <fieldset> tag can be used to group related fields together, which can make your form easier to understand and navigate. The <legend> tag can be used to provide a caption for the group.
+Provide helpful validation messages: Use the pattern attribute for regex validations on text inputs and provide a custom validation message using the title attribute.
+Make important fields required: The required attribute can be used to ensure that a field is filled out before the form is submitted.
+Use placeholder text wisely: Placeholder text can be useful to show the expected format for an input. However, it should not be used as a replacement for a label, as it disappears when the user starts typing.
+Ensure your form is accessible: Use semantic HTML, ARIA roles, and other accessibility best practices to ensure your form can be used by all users, including those using assistive technologies.
+Protect your form against CSRF attacks: If your form is submitting data to a server, ensure you are using anti-CSRF tokens to protect against cross-site request forgery attacks.
+Use <textarea> for multiline input: If you expect the user to provide longer input, use a <textarea> element instead of an <input> element.
+Provide a clear call to action: Your submit button should clearly indicate what will happen when the user clicks it. Instead of a generic “Submit”, consider using more descriptive language like “Sign Up”, “Send Message”, etc.
+
+
+How to protect against CSRF attacks:
+Cross-Site Request Forgery (CSRF) is a type of attack that tricks the victim into submitting a malicious request. It uses the identity and privileges of the victim to perform an undesired function on their behalf. To protect your forms against CSRF attacks, you can use several methods:
+
+Use Anti-CSRF Tokens: An anti-CSRF token is a type of server-side CSRF protection. It is a random string that is only known to the user’s browser and the server. The anti-CSRF token is included with each HTTP request and verified by the server. If the token is missing or incorrect, the server rejects the request. This works because while a CSRF attack can force a victim’s browser to make requests, it cannot read the victim’s data or view the anti-CSRF token.
+*******
+HTML
+
+<form action="/submit_form" method="post">
+  <input type="hidden" name="csrf_token" value="CSRF-TOKEN-HERE">
+  <!-- other form fields -->
+</form>
+AI-generated code. Review and use carefully. More info on FAQ.
+******
+
+SameSite Cookies: The SameSite attribute on cookies can help to mitigate CSRF attacks. It allows you to declare if your cookie should be restricted to a first-party or same-site context. There are three possible values for the SameSite attribute: Strict, Lax, and None.
+Check the Referer Header: The Referer header of the HTTP request can be checked to see if the request originated from an allowed domain. However, this method is generally less reliable than others because not all user-agents support HTTP headers, and some firewalls and proxies strip this information from requests.
+Use a Same Origin Policy: A same origin policy (SOP) is a critical aspect of web application security. It prevents a malicious script on one page from obtaining access to sensitive data on another web page through that page’s Document Object Model (DOM).
+Remember, security is a multi-layered approach. Using these methods together can provide more comprehensive protection against CSRF attacks. Always stay updated with the latest security practices and recommendations
+
+** start of undefined **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="National Shucking Contest participant and Gayzers After Action Review Contest Survey Form gathering contact, and Shucking weekend event feedback." />
+  <meta name="author" content="Ramonta Lee" />
+  <title>Awe Shucks, National Shucking Contest!</title>
+  <link href="styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <section id="about">
+    <h1 id="title">After Action Review Survey Form</h1>
+    <p id="description">Awe Shucks! National Shucking Contest! Thank You, to all you Gayzers and Shuckers. We really
+      enjoyed this weekend and in order to improve next year with potentially some of your input we need it as soon as
+      possible.</p>
+  </section>
+  <section id="form-data">
+    <form id="survey-form" action="submit_feedback" method="post" type="submit">
+      <fieldset>
+        <legend>Shucker Information</legend>
+        <label id="name-label" for="name">First Name: <input type="text" id="name" name="shucker_firstName" placeholder="Enter Your First Name" required><br>
+        </label>
+        <br>
+        <label id="last-name" for="last-name">Last Name: <input type="text" id="last-name" name="shucker_lastName" placeholder="Enter Your Last Name" required /><br>
+        </label>
+        <br>
+        <label id="number-label" for="number">Age: <input type="number" id="number" name="shucker_age" min="21" max="85"
+            pattern="[0-9]{2,2}" placeholder="Age" required />
+            <br>
+        </label>
+        <br>
+        <label id="email-label" for="email">Email: <input type="email" id="email" name="shucker_email"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" placeholder="Enter your email address" required>
+        </label>
+        <br>
+      </fieldset>
+    <fieldset>
+      <legend>
+        Events
+      </legend>
+      <label for="dropdown">Choose your favorite equipment:
+        <select id="dropdown" name="dropdown" required>
+          <option value="">(Select one)</option>
+          <option value="bat_ball">Bat and Ball</option>
+          <option value="club_ball">Club and Ball</option>
+          <option value="wet_slip">Wet Slip in Slides</option>
+        </select><br>
+      </label>
+      <br>
+      <label for="event">Event Participated: <input type="text" id="event" name="event" minlength="5" maxlength="30"
+          placeholder="Enter Event Name" required>
+      </label>
+      <p>What were your favorite event? (Check all that apply.)</p>
+    <input type="checkbox" id="pocketShucking" name="favoriteEvent" value="pocketShucking" checked />
+    <label for="pocketShucking"> Pocket Shucking</label><br>
+    <input type="checkbox" id="twoHandedWilly" name="favoriteEvent" value="twoHandedWilly">
+    <label for="twoHandedWilly"> Who Handed Willy</label><br>
+    <input type="checkbox" id="blackenShuckerMoan" name="favoriteEvent" value="blackenShuckerMoan">
+    <label for="blackenShuckerMoan"> Blacken Shucker Moan</label><br>
+    <p>Did you enjoy the events of the contest?</p>
+    <label for="enjoyment">Yes: <input type="radio" id="enjoyment-choice" name="enjoyment" value="choice" checked /></label>
+    <label for="enjoyment">No: <input type="radio" id="enjoyment-no" name="enjoyment" value="choice" />
+    </label>
+    </fieldset>
+    <fieldset id="experience-total">
+      <legend>Experience</legend>
+      <label for="experience">Overall Experience:
+      <select id="experience" name="experience">
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="average">Average</option>
+        <option value="poor">Poor
+        </option>
+      </select></label>
+      <br>
+      <br>
+      <label for="improvements">Suggestions for Improvements:
+      <textarea id="improvements" name="improvements" rows="4" cols="50"></textarea></label>
+    </fieldset><br />
+      <input id="submit"
+       name="submit" type="submit"
+       value="Submit" />
+  </form>
+</section>
+</body>
+</html>
+
+** end of undefined **
+
+** start of undefined **
+
+
+
+** end of undefined **
+
