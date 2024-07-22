@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, inital-scale=1.0" />
+  <meta name="description"
+    content="National Shucking Contest participant and Gayzers After Action Review Contest Survey Form gathering contact, and Shucking weekend event feedback." />
+  <meta name="author" content="Ramonta Lee" />
+  <title>Awe Shucks, National Shucking Contest!</title>
+  <link href="css\styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <section id="contestant-info">
+    <h1 id="title">After Action Review Survey Form</h1>
+    <p id="description">Awe Shucks! National Shucking Contest! Thank You, to all you Gayzers and Shuckers. We really
+      enjoyed this weekend and in order to improve next year with potentially some of your input we need it as soon as
+      possible.</p>
+    <form id="survey-form" action="submit_feedback" method="post">
+      <fieldset>
+        <legend>Shucker Information</legend>
+        <label for="name-label">First Name: <input type="text" id="name" name="name"
+            placeholder="Enter Your First Name" required><br>
+        </label>
+        <br>
+        <label id="name-label" for="name-label">Last Name: <input type="text" id="name-label" name="last-name"
+            placeholder="Enter Your Last Name" required><br>
+        </label>
+        <br>
+        <label id="number-label" for="age">Age: <input type="number" id="number" name="age" min="21" max="85"
+            pattern="[0-9]{2,2}" placeholder="Age" required><br>
+        </label>
+        <br>
+        <label id="email-label" for="email">Email: <input type="email" id="email" name="email"
+            pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$" placeholder="Enter your email address" required>
+        </label>
+        <br>
+      </fieldset>
+  </section>
+  <section id="events">
+    <fieldset>
+      <legend>
+        Events
+      </legend>
+      <p>Did you participate in an event today?
+      <label for="fun-so">Yes: <input type="radio" name="participation" checked />
+        <label for="fun-oh">No: <input type="radio"  name="participation"/></label></p>
+      <label for="dropdown">Choose your favorite equipment:
+        <br>
+        <select id="dropdown" name="dropdown" required>
+          <option value="">(Select one)</option>
+          <option value="bat_ball">Bat and Ball</option>
+          <option value="club_ball">Club and Ball</option>
+          <option value="wet_slip">Wet Slip in Slides</option>
+        </select><br>
+      </label>
+      <br>
+      <label for="event">Event Participated: <input type="text" id="event" name="event" minlength="5" maxlength="30"
+          placeholder="Enter Event Name" required>
+      </label>
+      <p>What was your favorite event?</p>
+      <label for="pocketShucking">
+        <input type="checkbox" id="pocketShucking" name="favoriteEvent" value="pocketShucking" checked /> Pocket Shucking
+      </label><br>
+      <input type="checkbox" id="twoHandedWilly" name="favoriteEvent" value="twoHandedWilly">
+      <label for="twoHandedWilly"> Who Handed Willy</label><br>
+      <input type="checkbox" id="blackenShuckerMoan" name="favoriteEvent" value="blackenShuckerMoan">
+      <label for="blackenShuckerMoan"> Blacken Shucker Moan</label><br>
+    </fieldset>
+  </section>
+  <section id="experience-total">
+    <fieldset>
+      <legend>Experience</legend>
+      <label for="experience">Overall Experience:</label><br>
+      <select id="experience" name="experience">
+        <option value="excellent">Excellent</option>
+        <option value="good">Good</option>
+        <option value="average">Average</option>
+        <option value="poor">Poor</option>
+      </select><br>
+      <br>
+      <label for="improvements">Suggestions for Improvements:</label><br>
+      <textarea id="improvements" name="improvements" rows="4" cols="50"></textarea><br>
+      <br>
+      <label for="submit_button">Form Submission: 
+        <input type="submit" value="Submit" />
+      </label>
+    </fieldset>
+  </section>
+  </form>
+</body>
+</html>
