@@ -5,7 +5,7 @@ html {
 body {
     background-image: url("src/img/chads_cornhole.jpg");
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: cover
     font-family: Arial, sans-serif;
     color: #000;
     margin: 0 auto;
